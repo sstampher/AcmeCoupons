@@ -30,3 +30,32 @@ const syncAndSeed = async () => {
 
 syncAndSeed();
 
+
+const express = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+const path = require('path');
+
+app.get('/api/products', async (req, res, next) => {
+    try{
+        res.send( await Product.findAll( { include: [ Coupon ] } ) );
+    }
+    catch(err){
+        next(err);
+    }
+})
+
+app.get('/api/coupons', async (req, res, next) => {
+    try{
+        res.send( await Coupon.findAll() );
+    }
+    catch(err){
+        next(err);
+    }
+})
+
+app.get('/', (req, res, next) => {
+    res.sendFile( path.join( __dirname, 'index.html') )
+})
+
+app.listen(port, () => console.log(`app listening on port ${port}`))
