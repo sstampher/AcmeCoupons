@@ -20,7 +20,7 @@
     "@babel/preset-env": "^7.5.4",
     "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "pg": "^7.11.0",
     "sequelize": "^5.10.0"
   },
